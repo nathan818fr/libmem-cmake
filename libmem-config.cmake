@@ -2,7 +2,7 @@
 #
 # Author: Nathan Poirier <nathan@poirier.io>
 # Source: https://github.com/nathan818fr/libmem-cmake
-# Version: 2023-12-09.0
+# Version: 2023-12-10.0
 #
 # Minimum required CMake version: 3.21
 #
@@ -61,6 +61,10 @@
 #   libmem::libmem (if LIBMEM_FOUND)
 #     CMake target for libmem.
 #
+
+if(CMAKE_VERSION VERSION_LESS 3.21.0)
+  message(WARNING "libmem-config.cmake requires CMake 3.21 or newer (you are using ${CMAKE_VERSION})")
+endif()
 
 set(LIBMEM_ROOT "" CACHE PATH "Path to the root folder of the pre-built version of libmem (containing include and lib folders, downloaded automatically if empty)")
 set(LIBMEM_DOWNLOAD_URL "https://github.com/rdbo/libmem/releases/download/{{version}}/libmem-{{version}}-{{target}}.tar.gz" CACHE STRING "URL for downloading the archive containing the pre-built version of libmem")
